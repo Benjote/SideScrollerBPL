@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
-    private CapsuleCollider2D collider;
+    private new CapsuleCollider2D collider;
     private SpriteRenderer spriteRenderer;
 
     void Start()

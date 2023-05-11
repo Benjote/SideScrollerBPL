@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -1477,7 +1477,6 @@ TextureImporter:
       charlieTheCapybaraAnimationSheet_56: 722676482
       charlieTheCapybaraAnimationSheet_26: -710346996
       charlieTheCapybaraAnimationSheet_29: -1997255307
-      charlieTheCapybaraAnimationSheet_59: -1576373088
       charlieTheCapybaraAnimationSheet_42: -618858304
       charlieTheCapybaraAnimationSheet_16: -423110502
       charlieTheCapybaraAnimationSheet_24: -804480462
@@ -1524,17 +1523,18 @@ TextureImporter:
       charlieTheCapybaraAnimationSheet_36: 1519805404
       charlieTheCapybaraAnimationSheet_34: -1841138268
       charlieTheCapybaraAnimationSheet_62: -1402246935
+      charlieTheCapybaraAnimationSheet_59: -1576373088
       charlieTheCapybaraAnimationSheet_5: 510730240
       charlieTheCapybaraAnimationSheet_31: -878381271
       charlieTheCapybaraAnimationSheet_40: -901101089
-      charlieTheCapybaraAnimationSheet_41: 1129216450
       charlieTheCapybaraAnimationSheet_50: 1902398912
+      charlieTheCapybaraAnimationSheet_41: 1129216450
       charlieTheCapybaraAnimationSheet_27: -1940863854
       charlieTheCapybaraAnimationSheet_1: 422978410
-      charlieTheCapybaraAnimationSheet_7: 219436119
       charlieTheCapybaraAnimationSheet_0: 1492758597
-      charlieTheCapybaraAnimationSheet_57: -1548964414
+      charlieTheCapybaraAnimationSheet_7: 219436119
       charlieTheCapybaraAnimationSheet_43: -146608257
+      charlieTheCapybaraAnimationSheet_57: -1548964414
       charlieTheCapybaraAnimationSheet_58: 690635956
       charlieTheCapybaraAnimationSheet_9: 1246782833
   spritePackingTag: 
