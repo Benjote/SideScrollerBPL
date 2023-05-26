@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class BotonCargarNivel : MonoBehaviour
 {
     public string nombreNivel = "Nivel1";
@@ -15,6 +16,5 @@ public class BotonCargarNivel : MonoBehaviour
     private void CargarNivel()
     {
         FindObjectOfType<GameManager>().LoadLevel(nombreNivel);
-        Time.timeScale = 1f; // Añadido para salir del modo de pausa al recargar el nivel
     }
 }
