@@ -50,4 +50,9 @@ public class GameManager : MonoBehaviour
         isPaused = false;
         pauseMenu.SetActive(false);
     }
+
+    public void Jugar()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }

@@ -36,6 +36,10 @@ public class PlayerController : MonoBehaviour
             collider.direction = CapsuleDirection2D.Horizontal;
             spriteRenderer.flipX = false;
         }
-
+        // Restaurar la dirección del collider cuando el personaje no se está moviendo
+        else
+        {
+            collider.direction = CapsuleDirection2D.Vertical;
+        }
     }
 }
