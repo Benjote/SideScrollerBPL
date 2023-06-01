@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
+    public float knockbackForce = 5f; // Fuerza de retroceso al ser tocado por el enemigo
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -48,5 +49,18 @@ public class PlayerController : MonoBehaviour
         // Dibujar el círculo de verificación del suelo en el Editor
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, groundCheckRadius);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemies"))
+        {
+            // Calcular la dirección del retroceso (izquierda)
+            Vector2 knockbackDirection = Vector2.left;
+
+            // Aplicar una fuerza de salto hacia atrás
+            rb.velocity = Vector2.zero; // Detener el movimiento actual
+            rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        }
     }
 }

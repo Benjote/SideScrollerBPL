@@ -8,13 +8,19 @@ public class BunnyController : MonoBehaviour
     public float deathFallSpeed = 3f;
 
     private bool isDead = false;
+    private bool isMovingRight = true;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
+    {
+        // Iniciar movimiento hacia la derecha
+        StartCoroutine(MoveRoutine());
+    }
+
+    private void Update()
     {
         if (!isDead)
         {
-            transform.Translate(Vector2.left * speed * Time.deltaTime);
+            transform.Translate(Vector2.right * (isMovingRight ? 1 : -1) * speed * Time.deltaTime);
         }
         else
         {
@@ -31,20 +37,29 @@ public class BunnyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!isDead && collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            // Obtener la dirección relativa de la colisión
-            Vector2 relativeDirection = collision.contacts[0].point - (Vector2)transform.position;
+            // Realizar la animación de muerte
+            isDead = true;
+            GetComponent<Rigidbody2D>().gravityScale = 1f;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            GetComponent<BoxCollider2D>().enabled = false;
+        }
+    }
 
-            // Verificar si la colisión es desde arriba
-            if (relativeDirection.y > 0)
+    private IEnumerator MoveRoutine()
+    {
+        while (true)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 1f);
+
+            if (hit.collider != null && hit.collider.CompareTag("Walls"))
             {
-                // Realizar la animación de muerte
-                isDead = true;
-                GetComponent<Rigidbody2D>().gravityScale = 1f;
-                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                GetComponent<BoxCollider2D>().enabled = false;
+                // Si choca con un objeto "Wall", cambiar dirección
+                isMovingRight = !isMovingRight;
             }
+
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
