@@ -1219,6 +1219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a64b800a212f4844b1857f97df2d003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHearts: 3
+  currentHearts: 0
+  gameOverSceneName: GameOver
   pauseMenu: {fileID: 853471902}
 --- !u!1 &1647556158
 GameObject:

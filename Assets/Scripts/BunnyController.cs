@@ -8,7 +8,7 @@ public class BunnyController : MonoBehaviour
     public float deathFallSpeed = 3f;
 
     private bool isDead = false;
-    private bool isMovingRight = true;
+    private bool isMovingRight = false;
 
     private void Start()
     {

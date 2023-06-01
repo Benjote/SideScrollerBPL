@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public float deathLimit = -50f; // Límite del eje Y para la muerte
+    public float deathLimit = -50f; // Lï¿½mite del eje Y para la muerte
 
     void Update()
     {
@@ -15,6 +15,6 @@ public class Player : MonoBehaviour
 
     void Die()
     {
-        SceneManager.LoadScene("DeathScene"); // Carga la escena del menú de muerte
+        SceneManager.LoadScene("GameOver"); // Carga la escena del menï¿½ de muerte
     }
 }
