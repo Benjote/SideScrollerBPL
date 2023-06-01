@@ -5,13 +5,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
-    private new CapsuleCollider2D collider;
+    public float groundCheckRadius = 0.2f;
+    public LayerMask groundLayer;
+
+    private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    private bool isGrounded;
 
     void Start()
     {
-        collider = GetComponent<CapsuleCollider2D>();
+        rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
@@ -19,7 +23,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float moveInput = Input.GetAxisRaw("Horizontal");
-        transform.Translate(moveInput * speed * Time.deltaTime, 0f, 0f);
+        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
         // Cambiar el parámetro "Horizontal" en el Animator cuando el personaje se mueve
         animator.SetFloat("Horizontal", Mathf.Abs(moveInput));
@@ -27,19 +31,22 @@ public class PlayerController : MonoBehaviour
         // Voltear el sprite si el personaje se mueve hacia la izquierda
         if (moveInput < 0)
         {
-            collider.direction = CapsuleDirection2D.Horizontal;
             spriteRenderer.flipX = true;
         }
         // Voltear el sprite si el personaje se mueve hacia la derecha
         else if (moveInput > 0)
         {
-            collider.direction = CapsuleDirection2D.Horizontal;
             spriteRenderer.flipX = false;
         }
-        // Restaurar la dirección del collider cuando el personaje no se está moviendo
-        else
-        {
-            collider.direction = CapsuleDirection2D.Vertical;
-        }
+
+        // Verificar si el personaje está en contacto con el suelo
+        isGrounded = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        // Dibujar el círculo de verificación del suelo en el Editor
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, groundCheckRadius);
     }
 }
