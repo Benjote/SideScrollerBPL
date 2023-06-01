@@ -1,20 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class BotonCargarNivel : MonoBehaviour
 {
-    public string nombreNivel = "Nivel1";
+    private Button boton;
 
     private void Awake()
     {
-        GetComponent<Button>().onClick.AddListener(CargarNivel);
+        boton = GetComponent<Button>();
+        boton.onClick.AddListener(CargarNivel);
     }
 
     private void CargarNivel()
     {
-        FindObjectOfType<GameManager>().LoadLevel(nombreNivel);
+        string nombreNivelActual = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(nombreNivelActual);
     }
 }

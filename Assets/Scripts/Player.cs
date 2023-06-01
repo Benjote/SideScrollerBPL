@@ -1,20 +1,24 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public float deathLimit = -50f; // L�mite del eje Y para la muerte
+    public float deathLimit = -50f; // Límite del eje Y para la muerte
+    public GameObject CanvasGO; // Referencia al objeto CanvasGO
 
-    void Update()
+    private bool isDead = false; // Bandera para evitar llamadas repetidas a la función Die
+
+    private void Update()
     {
-        if (transform.position.y < deathLimit)
+        if (!isDead && transform.position.y < deathLimit)
         {
             Die();
         }
     }
 
-    void Die()
+    private void Die()
     {
-        SceneManager.LoadScene("GameOver"); // Carga la escena del men� de muerte
+        isDead = true;
+        CanvasGO.SetActive(true);
+        // Aquí puedes agregar cualquier lógica adicional que desees ejecutar cuando el jugador muere
     }
 }

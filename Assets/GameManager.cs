@@ -15,20 +15,6 @@ public class GameManager : MonoBehaviour
     private bool isPaused = false;
     public GameObject pauseMenu;
 
-    private void Awake()
-    {
-        // Verificar si ya existe una instancia del GameManager y destruir este objeto si es el caso
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
     private void Start()
     {
         currentHearts = maxHearts; // Inicializar los corazones al máximo
